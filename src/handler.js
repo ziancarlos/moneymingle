@@ -11,6 +11,70 @@ const pool = mysql.createPool({
   queueLimit: 0,
 });
 
+const getUserByUserIdHandler = async (request, h) => {
+  const { userId } = request.params;
+
+  if (!userId) {
+    const response = h.response({
+      status: "fail",
+      message: "Id User undefined atau null!",
+    });
+
+    response.code(400);
+
+    response.header("Access-Control-Allow-Origin", "*");
+
+    return response;
+  }
+
+  let rows;
+  let fields;
+  try {
+    // Example Query
+    [rows, fields] = await pool.query("SELECT * FROM users WHERE id = ?", [
+      userId,
+    ]);
+  } catch (err) {
+    const response = h.response({
+      status: "fail",
+      message: "Error fetching data!",
+    });
+
+    response.code(400);
+
+    response.header("Access-Control-Allow-Origin", "*");
+
+    return response;
+  }
+
+  if (rows.length === 0) {
+    const response = h.response({
+      status: "fail",
+      message: "User tidak ditemukan",
+    });
+
+    response.code(400);
+
+    response.header("Access-Control-Allow-Origin", "*");
+
+    return response;
+  }
+
+  const response = h.response({
+    status: "success",
+    message: "User ditemukan",
+    data: {
+      user: rows[0],
+    },
+  });
+
+  response.header("Access-Control-Allow-Origin", "*");
+
+  response.code(201);
+
+  return response;
+};
+
 const loginHandler = async (request, h) => {
   const { username, password } = request.payload;
 
@@ -22,6 +86,8 @@ const loginHandler = async (request, h) => {
 
     response.code(400);
 
+    response.header("Access-Control-Allow-Origin", "*");
+
     return response;
   }
 
@@ -32,6 +98,8 @@ const loginHandler = async (request, h) => {
     });
 
     response.code(400);
+
+    response.header("Access-Control-Allow-Origin", "*");
 
     return response;
   }
@@ -52,6 +120,8 @@ const loginHandler = async (request, h) => {
 
     response.code(400);
 
+    response.header("Access-Control-Allow-Origin", "*");
+
     return response;
   }
 
@@ -63,6 +133,8 @@ const loginHandler = async (request, h) => {
 
     response.code(400);
 
+    response.header("Access-Control-Allow-Origin", "*");
+
     return response;
   }
 
@@ -73,6 +145,8 @@ const loginHandler = async (request, h) => {
       userId: rows[0].id,
     },
   });
+
+  response.header("Access-Control-Allow-Origin", "*");
 
   response.code(201);
 
@@ -89,6 +163,8 @@ const registerHandler = async (request, h) => {
 
     response.code(400);
 
+    response.header("Access-Control-Allow-Origin", "*");
+
     return response;
   }
 
@@ -99,6 +175,8 @@ const registerHandler = async (request, h) => {
     });
 
     response.code(400);
+
+    response.header("Access-Control-Allow-Origin", "*");
 
     return response;
   }
@@ -118,6 +196,8 @@ const registerHandler = async (request, h) => {
     });
 
     response.code(400);
+
+    response.header("Access-Control-Allow-Origin", "*");
 
     return response;
   }
@@ -146,6 +226,8 @@ const registerHandler = async (request, h) => {
 
     response.code(400);
 
+    response.header("Access-Control-Allow-Origin", "*");
+
     return response;
   }
 
@@ -156,6 +238,8 @@ const registerHandler = async (request, h) => {
     });
 
     response.code(400);
+
+    response.header("Access-Control-Allow-Origin", "*");
 
     return response;
   }
@@ -193,6 +277,7 @@ const registerHandler = async (request, h) => {
     });
 
     response.code(400);
+    response.header("Access-Control-Allow-Origin", "*");
 
     return response;
   }
@@ -204,10 +289,13 @@ const registerHandler = async (request, h) => {
 
   response.code(400);
 
+  response.header("Access-Control-Allow-Origin", "*");
+
   return response;
 };
 
 module.exports = {
   loginHandler,
   registerHandler,
+  getUserByUserIdHandler,
 };

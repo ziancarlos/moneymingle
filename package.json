@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "hapi-cors-headers": "^1.0.3"
+  }
+}

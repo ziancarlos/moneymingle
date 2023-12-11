@@ -6,11 +6,12 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <title>MoneyMingle - Login</title>
+    <title>MoneyMingle - Daftar</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
+    <title>MoneyMingle - Daftar Sekarang</title>
     <style>
       .navbar,
       .footer {
@@ -38,48 +39,24 @@
       }
 
       .container {
-        flex: 1;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
       }
 
-      .login-container {
+      form {
         max-width: 400px;
         margin: 0 auto;
-        padding: 20px;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        border-radius: 5px;
-        margin-top: 50px;
       }
 
-      .login-container h2 {
-        text-align: center;
-        color: #000;
-      }
-
-      .form-group {
-        margin-bottom: 20px;
-      }
-
-      .form-group label {
-        font-weight: bold;
-      }
-
-      .form-control {
-        border: 1px solid #42f5d1;
-        border-radius: 5px;
-      }
-
-      .btn {
-        background-color: #fffdfd;
-        border: 2px solid #42f5d1;
-        border-radius: 5px;
-        color: #4fa493;
-        width: 100%;
-      }
-
-      .btn:hover {
+      .btn-primary {
         background-color: #42f5d1;
-        color: #000;
+        border-color: #42f5d1;
+      }
+
+      .btn-primary:hover {
+        background-color: #2dc1a9;
+        border-color: #2dc1a9;
       }
     </style>
   </head>
@@ -112,30 +89,50 @@
       </div>
     </nav>
 
-    <div class="container">
-      <div class="login-container">
-        <h2>LOGIN</h2>
-        <form>
-          <div class="form-group">
-            <label for="username">Username</label>
-            <input
-              type="text"
-              class="form-control"
-              id="usernameInput"
-              placeholder="Enter your username"
-            />
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="passwordInput"
-              placeholder="Enter your password"
-            />
-          </div>
-          <button id="loginButton" type="submit" class="btn">Login</button>
-        </form>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <h2 class="mb-4">Daftar Sekarang di MoneyMingle</h2>
+          <form id="signupForm">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="usernameInput"
+                placeholder="Masukkan Username Anda"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="emailInput"
+                placeholder="Masukkan alamat email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="passwordInput"
+                placeholder="Buat kata sandi"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              id="registerButton"
+              class="btn btn-primary btn-block"
+            >
+              Daftar Sekarang
+            </button>
+          </form>
+        </div>
       </div>
     </div>
 
@@ -148,6 +145,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="script/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="../public/script/signup.js"></script>
+    <script src="script/register.js"></script>
   </body>
 </html>

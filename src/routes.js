@@ -2,6 +2,9 @@ const {
   loginHandler,
   registerHandler,
   getUserByUserIdHandler,
+  getTransactionByUserIdHandler,
+  deleteTransactionByTransactionIdHandler,
+  addTransactionByUserIdHandler,
 } = require("./handler");
 
 const routes = [
@@ -19,6 +22,21 @@ const routes = [
     method: "GET",
     path: "/user/{userId}",
     handler: getUserByUserIdHandler,
+  },
+  {
+    method: "POST",
+    path: "/transactions",
+    handler: getTransactionByUserIdHandler,
+  },
+  {
+    method: "DELETE",
+    path: "/transactions",
+    handler: deleteTransactionByTransactionIdHandler,
+  },
+  {
+    method: "PUT",
+    path: "/transactions",
+    handler: addTransactionByUserIdHandler,
   },
 ];
 

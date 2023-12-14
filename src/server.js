@@ -14,7 +14,7 @@ const init = async () => {
     plugin: HapiCors,
     options: {
       origins: ["*"], // Set your allowed origin
-      methods: ["POST, OPTIONS"], // Add the HTTP methods you want to allow
+      methods: ["*"], // Add the HTTP methods you want to allow
     },
   });
 

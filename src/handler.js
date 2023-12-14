@@ -356,6 +356,8 @@ const getTransactionByUserIdHandler = async (request, h) => {
 const deleteTransactionByTransactionIdHandler = async (request, h) => {
   const { transactionId } = request.payload;
 
+  console.log(transactionId);
+
   if (!transactionId) {
     const response = h.response({
       status: "fail",
@@ -420,7 +422,7 @@ const addTransactionByUserIdHandler = async (request, h) => {
   const { name, amount, description, type, userId } = request.payload;
 
   // Validate amount (numeric) and type (0 or 1)
-  if (isNaN(amount) || typeof type !== "number" || ![0, 1].includes(type)) {
+  if (isNaN(amount) || ![0, 1].includes(type)) {
     const response = h.response({
       status: "fail",
       message: "Invalid amount or type",
@@ -445,7 +447,7 @@ const addTransactionByUserIdHandler = async (request, h) => {
         status: "fail",
         message: "User does not exist",
       });
-
+      ``;
       response.code(404); // Not Found
 
       response.header("Access-Control-Allow-Origin", "*");
